@@ -14,17 +14,17 @@ const personSchema = new mongoose.Schema({
 // ✅ Create Model
 const Person = mongoose.model('Person', personSchema);
 
-// ✅ Create and Save a Person
 const createAndSavePerson = (done) => {
-  const person = new Person({
+  const personData = {
     name: "John Doe",
     age: 25,
     favoriteFoods: ["pizza", "burger"]
-  });
+  };
 
-  person.save(function(err, savedPerson) {
-    if (err) return done(err);
-    return done(null, savedPerson);
+  // use Person.create – one liner that both constructs *and* saves
+  Person.create(personData, (err, savedDoc) => {
+    if (err) return done(err);      // let the test runner see the error
+    done(null, savedDoc);           // savedDoc now has _id, __v, etc.
   });
 };
 
