@@ -1,21 +1,20 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-// Connect to MongoDB
+// ✅ Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// ✅ 1. Create the Schema
+// ✅ Define Schema
 const personSchema = new mongoose.Schema({
   name: { type: String, required: true },
   age: Number,
   favoriteFoods: [String]
 });
 
-const Person = mongoose.model("Person", personSchema);
+// ✅ Create Model
+const Person = mongoose.model('Person', personSchema);
 
-
-// (keep your other functions below unchanged for now)
-
+// ✅ Create and Save a Person
 const createAndSavePerson = (done) => {
   const person = new Person({
     name: "John Doe",
@@ -23,13 +22,13 @@ const createAndSavePerson = (done) => {
     favoriteFoods: ["pizza", "burger"]
   });
 
-  person.save((err, data) => {
+  person.save(function(err, data) {
     if (err) return done(err);
-    return done(null, data);
+    done(null, data);
   });
 };
 
-
+// 🔥 Leave the rest of the functions empty for now (FCC will ask you to implement them step by step)
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
 };
@@ -70,7 +69,7 @@ const queryChain = (done) => {
   done(null /*, data*/);
 };
 
-// Do not touch exports
+// ✅ Export everything correctly
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.findPeopleByName = findPeopleByName;
