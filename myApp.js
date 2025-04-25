@@ -11,8 +11,8 @@ const personSchema = new mongoose.Schema({
   favoriteFoods: [String]
 });
 
-// ✅ 2. Create the Model
-const Person = mongoose.model('Person', personSchema);
+const Person = mongoose.model("Person", personSchema);
+
 
 // (keep your other functions below unchanged for now)
 
