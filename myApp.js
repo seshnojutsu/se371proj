@@ -1,11 +1,20 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+// Define the Schema
+const personSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favoriteFoods: [String]
+});
 
-let Person;
+// Create the Model
+const Person = mongoose.model('Person', personSchema);
 
+// Now your functions (even if still empty) won't crash
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
 };
@@ -28,13 +37,11 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
   done(null /*, data*/);
 };
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-
   done(null /*, data*/);
 };
 
@@ -44,22 +51,15 @@ const removeById = (personId, done) => {
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
-
   done(null /*, data*/);
 };
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-
   done(null /*, data*/);
 };
 
-/** **Well Done !!**
-/* You completed these challenges, let's go celebrate !
- */
-
-//----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
-
+// Export
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.findPeopleByName = findPeopleByName;
@@ -71,4 +71,3 @@ exports.createManyPeople = createManyPeople;
 exports.removeById = removeById;
 exports.removeManyPeople = removeManyPeople;
 exports.queryChain = queryChain;
-
