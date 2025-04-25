@@ -1,4 +1,7 @@
 require('dotenv').config();
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 let Person;
@@ -54,6 +57,7 @@ const queryChain = (done) => {
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
  */
+module.exports = app;
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
@@ -68,3 +72,4 @@ exports.createManyPeople = createManyPeople;
 exports.removeById = removeById;
 exports.removeManyPeople = removeManyPeople;
 exports.queryChain = queryChain;
+
