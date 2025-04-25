@@ -57,7 +57,6 @@ const queryChain = (done) => {
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
  */
-module.exports = app;
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
