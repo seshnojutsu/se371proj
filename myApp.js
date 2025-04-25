@@ -4,17 +4,18 @@ const mongoose = require('mongoose');
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Define the Schema
+// ✅ 1. Create the Schema
 const personSchema = new mongoose.Schema({
   name: { type: String, required: true },
   age: Number,
   favoriteFoods: [String]
 });
 
-// Create the Model
+// ✅ 2. Create the Model
 const Person = mongoose.model('Person', personSchema);
 
-// Now your functions (even if still empty) won't crash
+// (keep your other functions below unchanged for now)
+
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
 };
@@ -59,7 +60,7 @@ const queryChain = (done) => {
   done(null /*, data*/);
 };
 
-// Export
+// Do not touch exports
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.findPeopleByName = findPeopleByName;
