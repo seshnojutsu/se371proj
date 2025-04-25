@@ -15,18 +15,18 @@ const personSchema = new mongoose.Schema({
 const Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
-  const personData = {
+  const person = new Person({
     name: "John Doe",
     age: 25,
     favoriteFoods: ["pizza", "burger"]
-  };
-
-  // use Person.create – one liner that both constructs *and* saves
-  Person.create(personData, (err, savedDoc) => {
-    if (err) return done(err);      // let the test runner see the error
-    done(null, savedDoc);           // savedDoc now has _id, __v, etc.
   });
+
+  person
+    .save()
+    .then((doc) => done(null, doc))  // <= success, pass saved document
+    .catch((err) => done(err));      // <= any error bubbles to Express
 };
+
 
 // 🔥 Leave the rest of the functions empty for now (FCC will ask you to implement them step by step)
 const createManyPeople = (arrayOfPeople, done) => {
